@@ -6,9 +6,14 @@ export default class Button extends Component {
         super();
 
     }
+    handlePress = () =>{
+        if(this.props.onPress){
+            this.props.onPress(this.props.value);
+        }
+    }
     render() {
         return (
-            <TouchableOpacity onPress={null}>
+            <TouchableOpacity onPress={this.handlePress}>
                 <Text style={styles.button}>{this.props.value}</Text>
             </TouchableOpacity>
         );
