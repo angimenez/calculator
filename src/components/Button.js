@@ -1,35 +1,39 @@
-import React, { Component } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 
 export default class Button extends Component {
-    constructor(){
-        super();
-
+  constructor() {
+    super();
+  }
+  handlePress = () => {
+    if (this.props.onPress) {
+      this.props.onPress(this.props.value);
     }
-    handlePress = () =>{
-        if(this.props.onPress){
-            this.props.onPress(this.props.value);
-        }
-    }
-    render() {
-        return (
-            <TouchableOpacity onPress={this.handlePress}>
-                <Text style={styles.button}>{this.props.value}</Text>
-            </TouchableOpacity>
-        );
-    }
+  };
+  render() {
+    return (
+      <TouchableOpacity style={styles.button} onPress={this.handlePress}>
+        <Text style={styles.buttonText}>{this.props.value}</Text>
+      </TouchableOpacity>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    button: {
-        width: 80,
-        height: 80,
-        backgroundColor: "gray",
-        textAlign: "center",
-        textAlignVertical: "center",
-        color: "white",
-        fontSize: 20,
-        borderRadius: 10,
-        borderWidth: 2
-    },
+  button: {
+    margin: 1,
+    width: 83,
+    height: 83,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 10,
+    borderWidth: 2,
+    backgroundColor: "gray",
+  },
+  buttonText: {
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "white",
+    fontSize: 20,
+  },
 });
